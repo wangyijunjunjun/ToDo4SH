@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
     var options = {
-        port: 8079
+        port: 8666
     };
 
     grunt.initConfig({

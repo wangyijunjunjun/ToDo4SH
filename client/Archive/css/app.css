@@ -24,7 +24,7 @@ button {
 body {
     font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.4em;
-    background: #333333;
+    background: #269D80;
     color: #ffffff;
     min-width: 230px;
     max-width: 550px;
@@ -72,10 +72,23 @@ input[type="checkbox"] {
 
 #todoapp h1 {
     position: absolute;
-    top: -181px;
+    top: -202px;
     width: 100%;
     font-size: 100px;
-    font-weight: 100;
+    font-weight: 300;
+    text-align: center;
+    color: #ffffff;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+}
+
+#todoapp h3{
+    position: absolute;
+    top: -84px;
+    width: 100%;
+    font-size: 37px;
+    font-weight: 300;
     text-align: center;
     color: #ffffff;
     -webkit-text-rendering: optimizeLegibility;
@@ -105,7 +118,7 @@ input[type="checkbox"] {
 }
 
 #new-todo {
-    color: black;
+    color: #269D80;
     padding: 16px 16px 16px 60px;
     border: none;
     background: rgba(0, 0, 0, 0.003);
@@ -162,7 +175,8 @@ label[for='toggle-all'] {
 #todo-list li.editing {
     border-bottom: none;
     padding: 0;
-    color:black;
+     color: #269D80;
+;
 }
 
 #todo-list li.editing .edit {
@@ -198,7 +212,7 @@ label[for='toggle-all'] {
 }
 
 #todo-list li label {
-    color: black;
+    color: #269D80;
     white-space: pre;
     word-break: break-word;
     padding: 15px 60px 15px 15px;
@@ -308,7 +322,7 @@ label[for='toggle-all'] {
 }
 
 #filters li a.selected {
-    border-color: #000000;
+    border-color: #269D80;
 }
 
 #clear-completed,
@@ -344,6 +358,10 @@ html #clear-completed:active {
 
 #info p {
     line-height: 1;
+    font-size: 22px;
+    color: white;
+    margin-top: -6px;
+
 }
 
 #info a {

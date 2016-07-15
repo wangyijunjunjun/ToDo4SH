@@ -1,21 +1,19 @@
 todo
 ========
 
-this is a test project from nex(wangyijun)
-
-to run this project , follow the steps below
+请按照如下步骤配置项目
 
 
-###Step02
+###第0步
 
 make sure your computer has these things installed
 
  * nodejs
  * mysql
- 
+
 
 ###Step01:
-####1)configurate your mysql 
+####1)configurate your mysql
 ```
 create database todo;
 ```

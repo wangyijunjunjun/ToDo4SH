@@ -2,8 +2,8 @@
     'use strict';
 
     // some variables and helpers for our fake database stuff
-    var todoCounter = 0,
-        localStorageKey = "todos";
+    var todoCounter = 0;
+
 
     function getItemByKey(itemKey) {
 
@@ -23,7 +23,7 @@
                         global.todoListStore.queryItem = json[0];
                     })
                 }
-            },function (err) {
+            }, function (err) {
                 alert("对不起,您的数据库连接失败,请检查您的数据库连接." +
                     "（请按照readme.md文件来配置数据库并修改Server内的app.js内的数据库用户名和密码）");
             });
@@ -52,7 +52,7 @@
                     getAllItems();
                 }
 
-            },function (err) {
+            }, function (err) {
                 alert("对不起,您的数据库连接失败,请检查您的数据库连接." +
                     "（请按照readme.md文件来配置数据库并修改Server内的app.js内的数据库用户名和密码）");
             });
@@ -78,11 +78,41 @@
                         global.todoListStore.updateList(global.todoListStore.list);
                     })
                 }
-            },function (err) {
+            }, function (err) {
                 alert("对不起,您的数据库连接失败,请检查您的数据库连接." +
                     "（请按照readme.md文件来配置数据库并修改Server内的app.js内的数据库用户名和密码）");
             });
 
+    }
+
+    function init() {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json; charset=utf-8");
+
+        var myInit = {
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+        };
+
+        fetch("http://localhost:8080/todoList", myInit)
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json().then(function (json) {
+
+                        global.todoListStore.list = json;
+                        global.todoListStore.updateList(global.todoListStore.list);
+
+                        //拿到list中最大的id
+                        var maxId = global.todoListStore.list[global.todoListStore.list.length - 1].id;
+                        todoCounter = maxId+1;
+
+                    })
+                }
+            }, function (err) {
+                alert("对不起,您的数据库连接失败,请检查您的数据库连接." +
+                    "（请按照readme.md文件来配置数据库并修改Server内的app.js内的数据库用户名和密码）");
+            });
     }
 
     function updateTodoItem(itemKey, isComplete, label) {
@@ -105,7 +135,7 @@
                 if (response.ok) {
                     getAllItems();
                 }
-            },function (err) {
+            }, function (err) {
                 alert("对不起,您的数据库连接失败,请检查您的数据库连接." +
                     "（请按照readme.md文件来配置数据库并修改Server内的app.js内的数据库用户名和密码）");
             });
@@ -131,14 +161,14 @@
                 if (response.ok) {
                     getAllItems();
                 }
-            },function (err) {
+            }, function (err) {
                 alert("对不起,您的数据库连接失败,请检查您的数据库连接." +
                     "（请按照readme.md文件来配置数据库并修改Server内的app.js内的数据库用户名和密码）");
             });
     }
 
     global.todoListStore = Reflux.createStore({
-        list: [{id: 0, created: 333, isComplete: 0, label: "欢迎使用TodosByPowman"}],
+        list: [{id: 0, created: 333, isComplete: 0, label: "欢迎使用Todos,请先配置您的数据库"}],
         queryItem: [{}],
 
         // this will set up listeners to all publishers in TodoActions, using onKeyname (or keyname) as callbacks
@@ -208,10 +238,10 @@
 
                         })
                     }
-                },function (err) {
-                alert("对不起,您的数据库连接失败,请检查您的数据库连接." +
-                    "（请按照readme.md文件来配置数据库并修改Server内的app.js内的数据库用户名和密码）");
-            });
+                }, function (err) {
+                    alert("对不起,您的数据库连接失败,请检查您的数据库连接." +
+                        "（请按照readme.md文件来配置数据库并修改Server内的app.js内的数据库用户名和密码）");
+                });
         },
         onToggleAllItems: function (checked) {
             this.updateList(_.map(this.list, function (item) {
@@ -237,7 +267,11 @@
         },
 
         getInitialState: function () {
-            getAllItems();
+            init();
+
+            //这里有一个bug,应该在init的时候,拿到最大的id,然后设置count值
+
+
             return this.list;
         }
     });
