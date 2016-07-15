@@ -6,47 +6,54 @@ todo
 
 ###第0步
 
-make sure your computer has these things installed
+安装如下两个软件
 
  * nodejs
  * mysql
 
-
-###Step01:
-####1)configurate your mysql
+###第一步
+####1)配置数据库
 ```
 create database todo;
 ```
 
 ```
 use todo;
-create table todoList;
+```
+```
+CREATE TABLE `todoList` (
+  `id` int(11) NOT NULL,
+  `created` bigint(20) NOT NULL,
+  `isComplete` tinyint(4) NOT NULL DEFAULT '0',
+  `label` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
-####2)change the codes in server/app.js
+
+####2)修改 server/app.js
 
 ```
 var connection = mysql.createConnection({
     host     : 'localhost',
-    user     : 'nex',
-    password : 'edghuli',
+    user     : 'username',
+    password : 'yourpass',
     database : 'todo'
 });
 ```
-write down your user and password
+修改你的your user and password
 
 ###Step02:
-####1)get into server
+####1)进入server
 ```
 cd path/server
 node app.js
 ```
 
-####2)get into client
+####2)进入client
 ```
 cd path/client
 grunt
 ```
 
 ###3)enjoy it!
-f
