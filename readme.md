@@ -30,6 +30,7 @@ CREATE TABLE `todoList` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
+接着，你可以添加一条数据来测试todo数据库和todoList表是否创建成功
 
 ####2)修改 server/app.js
 
@@ -56,4 +57,7 @@ cd path/client
 grunt
 ```
 
-###3)enjoy it!
+###3)跑起来了，你可以添加，删除，修改你的todolist了
+
+
+注意：请务必核实数据库的库名和表名是否正确，以及务必注意需要去server/app.js中修改代码，填入你的数据库username和password
