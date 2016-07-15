@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 var connection = mysql.createConnection({
     host     : 'localhost',
-    user     : 'nex',
-    password : 'edghuli',
+    user     : 'username',
+    password : 'password',
     database : 'todo'
 });
 app.get('/', function (req, res) {
