@@ -8,5 +8,4 @@
         "clearCompleted",
         "editItem"
     ]);
-
 })(window.Reflux, window);

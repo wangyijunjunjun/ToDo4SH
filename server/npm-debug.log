@@ -13,7 +13,3 @@
 11 error code ENOENT
 12 error errno -2
 13 error syscall open
-14 error enoent ENOENT: no such file or directory, open '/Users/wangyijun/Downloads/expressAPI/package.json'
-14 error enoent This is most likely not a problem with npm itself
-14 error enoent and is related to npm not being able to find a file.
-15 verbose exit [ -2, true ]
