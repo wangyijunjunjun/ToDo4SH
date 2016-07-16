@@ -1,4 +1,4 @@
-todo
+todo(王又由)
 ========
 
 请按照如下步骤配置项目
@@ -54,6 +54,7 @@ node app.js
 ```
 
 ####2)进入client
+如果之前没有安装grunt，请npm install -g grunt
 ```
 cd path/client
 grunt
